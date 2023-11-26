@@ -1,6 +1,7 @@
 package com.szalai.empmanager;
 
 import com.szalai.empmanager.controller.dto.EmployeeRequest;
+import com.szalai.empmanager.controller.dto.EmployeeResponse;
 import com.szalai.empmanager.service.EmployeeService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -21,10 +22,11 @@ public class EmpManagerApplication {
 
     @PostConstruct
     public void seed(){
-        employeeService.addAllEmployees(List.of(
+        List<EmployeeResponse> employees = employeeService.addAllEmployees(List.of(
                 new EmployeeRequest("Adam", "Apple", "SA", true),
                 new EmployeeRequest("Ben", "Brown", "DA", true),
                 new EmployeeRequest("Cindy", "Crown", "BI", false)));
+        System.out.println(employees);
     }
 
 }
